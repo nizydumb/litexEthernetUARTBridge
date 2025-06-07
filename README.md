@@ -49,13 +49,13 @@ All tools are open‑source or free‑for‑education.
 
 LiteX workflow has **three passes**.
 
-### A — generate headers
+### A — build target script to generate headers
 ```bash
-python -m litex_boards.targets.tang_primer_20k        --with-ethernet        --integrated-rom-size=0x8000        --build
+python -m litex_boards.targets.tang_primer_20k --with-ethernet --integrated-rom-size=0x8000 --build
 # Ignore the Gowin size warning – we only need the headers.
 ```
 
-### B — build custom UART-ETHERNET-BRIDGE firmware
+### B — build main logic firmware
 ```bash
 cd firmware
 make clean && make
