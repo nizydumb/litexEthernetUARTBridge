@@ -93,8 +93,9 @@ arp -s 192.168.1.100 02-00-00-00-00-01 192.168.1.101
 ```
    * Send a UDP packet back with **netcat (ncat)**:
 ```bash
-echo "hello from ethernet and from other things and other planet and more" | ncat -u 192.168.1.100 1234
-# Replace IP / port to match IP_DST / UDP_PORT_DST
+echo "hello from other planet called Ethernet" | ncat -u 192.168.1.100 1234
+# 192.168.1.100 - litex board's binded ip address
+# 1234 - litex board's binded udp port
 ```
    * The text appears immediately in your serial terminal.
 3. **Sniff traffic (optional)**
