@@ -8,7 +8,7 @@
 
 | Stage | Milestone description | Status |
 |-------|-----------------------|--------|
-| **1** | Built minimal LiteX design with built‑in BIOS (generated headers & `linker.ld`) | ✅ |
+| **1** | Built minimal LiteX design with built‑in BIOS (generated headers) | ✅ |
 | **2** | Compiled custom UART firmware with Makefile derived from LiteX *demo‑software* | ✅ |
 | **3** | Verified UDP transmission over Ethernet | ✅ |
 | **4** | Completed bi‑directional **UART ↔ UDP bridge** | ✅ |
@@ -85,18 +85,18 @@ Adjust the plugin path to suit your distr.
    * Type a line and press **Enter** — the board wraps it into a UDP datagram and transmits it.
 2. **Ethernet ➜ UART**
    * Add static ARP record to network interface of remote peer:
-```bash
-arp -s 192.168.1.100 02-00-00-00-00-01 192.168.1.101
-# 192.168.1.100 - board‑side ip address
-# 02-00-00-00-00-01 - board‑side mac address
-# 192.168.1.101 - network interface of remote peer 
-```
+  ```bash
+  arp -s 192.168.1.100 02-00-00-00-00-01 192.168.1.101
+  # 192.168.1.100 - board‑side ip address
+  # 02-00-00-00-00-01 - board‑side mac address
+  # 192.168.1.101 - network interface of remote peer 
+  ```
    * Send a UDP packet back with **netcat (ncat)**:
-```bash
-echo "hello from other planet called Ethernet" | ncat -u 192.168.1.100 1234
-# 192.168.1.100 - board‑side ip address
-# 1234 - board‑side udp port
-```
+  ```bash
+  echo "hello from other planet called Ethernet" | ncat -u 192.168.1.100 1234
+  # 192.168.1.100 - board‑side ip address
+  # 1234 - board‑side udp port
+  ```
    * The text appears immediately in your serial terminal.
 3. **Sniff traffic (optional)**
    * Open **Wireshark** on the interface connected to the board.
