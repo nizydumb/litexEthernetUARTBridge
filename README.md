@@ -1,4 +1,4 @@
-# litexEthernetUARTBridge
+# LitexEthernetUARTBridge
 
 *A minimal LiteX design for the **Tang Primer 20K** that acts as a **full‑duplex UART ↔ UDP bridge**. Bytes arriving on the board’s UART are wrapped into UDP datagrams and sent to the network; incoming UDP payloads are forwarded to UART.*
 
