@@ -55,9 +55,10 @@ python -m litex_boards.targets.tang_primer_20k --with-ethernet --integrated-rom-
 # Ignore the Gowin size warning – we only need the headers.
 ```
 
-### B — build main logic firmware
+### B — download repository and compile firmware
 ```bash
-cd firmware
+git clone https://github.com/nizzydumb/litexEthernetUARTBridge.git
+cd litexEthernetUARTBridge/firmware
 make clean && make
 ```
 Generates `firmware/main.bin`.
