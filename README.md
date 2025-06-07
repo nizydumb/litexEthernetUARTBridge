@@ -84,6 +84,13 @@ Adjust the plugin path to suit your distr.
    * Open a serial terminal (PuTTY, *minicom*, *screen* …) at **115 200 baud**.
    * Type a line and press **Enter** — the board wraps it into a UDP datagram and transmits it.
 2. **Ethernet ➜ UART**
+   * Add static ARP record to network interface of host machine:
+```bash
+arp -s 192.168.1.100 02-00-00-00-00-01 192.168.1.101
+# 192.168.1.100 - litex board's binded ip address
+# 02-00-00-00-00-01 - litex board's binded mac address
+# 192.168.1.101 - network interface of host machine 
+```
    * Send a UDP packet back with **netcat (ncat)**:
 ```bash
 echo "hello from ethernet and from other things and other planet and more" | ncat -u 192.168.1.100 1234
