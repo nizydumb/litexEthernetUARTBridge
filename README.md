@@ -53,7 +53,7 @@ LiteX workflow has **three passes**.
 ```bash
 git clone https://github.com/nizzydumb/litexEthernetUARTBridge.git
 cd litexEthernetUARTBridge
-python -m litex_boards.targets.tang_primer_20k --with-ethernet --integrated-rom-size=0x8000 --build
+python -m litex_boards.targets.sipeed_tang_primer_20k --with-ethernet --integrated-rom-size=0x8000 --build
 # Ignore the Gowin size warning – we only need the headers.
 ```
 
@@ -67,7 +67,7 @@ Generates `firmware/main.bin`.
 ### C — embed firmware, enable Ethernet, flash
 ```bash
 cd ..
-python3 -m litex_boards.targets.tang_primer_20k --with-ethernet --integrated-rom-init=firmware/main.bin --build --flash
+python3 -m litex_boards.targets.sipeed_tang_primer_20k --with-ethernet --integrated-rom-init=firmware/main.bin --build --flash
 ```
 
 ---
