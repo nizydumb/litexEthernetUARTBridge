@@ -49,16 +49,17 @@ All tools are open‑source or free‑for‑education.
 
 LiteX workflow has **three passes**.
 
-### A — build target script to generate headers
+### A — download repository and build target script to generate headers
 ```bash
+git clone https://github.com/nizzydumb/litexEthernetUARTBridge.git
+cd litexEthernetUARTBridge
 python -m litex_boards.targets.tang_primer_20k --with-ethernet --integrated-rom-size=0x8000 --build
 # Ignore the Gowin size warning – we only need the headers.
 ```
 
-### B — download repository and compile firmware
+### B — compile firmware
 ```bash
-git clone https://github.com/nizzydumb/litexEthernetUARTBridge.git
-cd litexEthernetUARTBridge/firmware
+cd firmware
 make clean && make
 ```
 Generates `firmware/main.bin`.
