@@ -1,6 +1,6 @@
 # litexEthernetUARTBridge
 
-*A minimal LiteX design for the **Tang Primer 20K** that acts as a **full‑duplex UART ↔ UDP bridge**. Bytes arriving on the board’s UART (115 200 baud) are wrapped into UDP datagrams and sent to the network; incoming UDP payloads are forwarded to UART.*
+*A minimal LiteX design for the **Tang Primer 20K** that acts as a **full‑duplex UART ↔ UDP bridge**. Bytes arriving on the board’s UART are wrapped into UDP datagrams and sent to the network; incoming UDP payloads are forwarded to UART.*
 
 ---
 
@@ -55,7 +55,7 @@ python -m litex_boards.targets.tang_primer_20k        --with-ethernet        --i
 # Ignore the Gowin size warning – we only need the headers.
 ```
 
-### B — build custom UART firmware
+### B — build custom UART-ETHERNET-BRIDGE firmware
 ```bash
 cd firmware
 make clean && make
@@ -65,7 +65,7 @@ Generates `firmware/main.bin`.
 ### C — embed firmware, enable Ethernet, flash
 ```bash
 cd ..
-python -m litex_boards.targets.tang_primer_20k        --with-ethernet        --integrated-rom-init=firmware/main.bin        --build --flash
+python3 -m litex_boards.targets.tang_primer_20k --with-ethernet --integrated-rom-init=firmware/main.bin --build --flash
 ```
 
 ---
@@ -75,7 +75,7 @@ If the Gowin toolchain on Linux reports missing Qt plugins (e.g. `qt.qpa.plugin:
 ```bash
 QT_QPA_PLATFORM_PLUGIN_PATH=/usr/lib/x86_64-linux-gnu/qt5/plugins QT_QPA_PLATFORM=xcb QT_XCB_GL_INTEGRATION=none python3 -m litex_boards.targets.tang_primer_20k …
 ```
-Adjust the plugin path to suit your distro.
+Adjust the plugin path to suit your distr.
 
 ---
 
@@ -92,7 +92,7 @@ echo "hello from ethernet and from other things and other planet and more" | nca
    * The text appears immediately in your serial terminal.
 3. **Sniff traffic (optional)**
    * Open **Wireshark** on the interface connected to the board.
-   * Use display filter `udp.port == 1234` to watch packets in both directions.
+   * Use display filter, for example `udp.port == 1234` to watch packets in both directions.
 
 ---
 
