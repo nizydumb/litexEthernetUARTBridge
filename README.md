@@ -95,7 +95,8 @@ Adjust the plugin path to suit your distr.
   ```
    * Send a UDP packet back with **netcat (ncat)**:
   ```bash
-  echo "hello from other planet called Ethernet" | ncat -u 192.168.1.100 1234
+  echo "hello from other planet called Ethernet" | ncat -u -s 192.168.1.101 192.168.1.100 1234
+  # 192.168.1.101 - remote peer's ip address
   # 192.168.1.100 - board‑side ip address
   # 1234 - board‑side udp port
   ```
